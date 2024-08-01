@@ -597,7 +597,7 @@ class Task(six.with_metaclass(Register, BaseTask)):
             exclude |= set(self.interactive_params)
 
         # build a map "name -> value" for all significant parameters
-        params = OrderedDict()
+        params = dict()
         for name, param in self.get_params():
             value = getattr(self, name)
             include = (
@@ -608,7 +608,7 @@ class Task(six.with_metaclass(Register, BaseTask)):
             if include:
                 params[name] = value
 
-        return params
+        return OrderedDict(sorted(params.items(), reverse=True))
 
     def _repr_flags(self):
         return []
