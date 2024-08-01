@@ -74,7 +74,7 @@ class Target(shims.Target):
         return colored(name, "cyan") if color else name
 
     def _repr_pair(self, key, value, color=False):
-        return "{}={}".format(colored(key, color="blue", style="bright") if color else key, value)
+        return "{}: {}".format(colored(key, color="blue", style="bright") if color else key, value)
 
     def _repr_flag(self, name, color=False):
         return colored(name, color="magenta") if color else name
